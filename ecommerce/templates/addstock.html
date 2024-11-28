@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="POST" >
+    {% csrf_token %}
+  <div class="mb-3">
+    <label  class="form-label">Quantity</label>
+    <input type="text" name="n" value= "{{ pro.stock }}" class="form-control"  aria-describedby="emailHelp">
+ </div>
+
+<div>
+  <button type="submit" class="btn btn-primary">Submit</button></div>
+</form>
+</body>
+</html>
+{% endblock %}

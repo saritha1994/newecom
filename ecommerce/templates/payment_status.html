@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    {% if status == True %}
+    <h2>payment success</h2>
+    {% else %}
+    <h2>payment failure</h2>
+    {% endif %}
+</div>
+
+</body>
+</html>
+{% endblock %}

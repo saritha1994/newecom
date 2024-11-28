@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>You have searched for {{ query }}</h1>
+<div class="container">
+<!--<div class="row">-->
+                    {% for i in pro %}
+<!--                    <div class="col-sm-3">-->
+                        <div class="single-new-pro mb-30 text-center">
+                            <div class="product-img">
+                                <img src="{{ i.image.url }}" height="10%" width="10%" alt="">
+                            </div>
+                            <div class="product-caption">
+                                <h3><a href="{% url 'shop:productdetail' i.id %}">{{ i.name }}</a></h3>
+                                <h4><b>{{ i.price }} Rs</b></h4>
+                                <span>{{ i.description }}</span>
+                            </div>
+                            {% empty %}
+                            <h3>No result found</h3>
+                        </div>
+                    </div>{% endfor %}
+                     </div>
+</div>
+</body>
+</html>
+{% endblock %}

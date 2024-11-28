@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+<div class="container bg-warning">
+    <div class="row">
+        <div class="col-7">
+            <table class="table table-bordered border-3">
+                <tr>
+                    <th colspan="5" class="text-center">Cart items</th>
+                </tr>
+                {% for i in cart %}
+                <tr>
+                    <td class="p-3"><img src="{{ i.product.image.url }}" width="200px" height="200px"></img></td>
+                    <td class="text-md-center p-3">{{i.product.name}}</td>
+                    <td class="text-md-center p-3">Unit price : {{i.product.price}}<br><br>Quantity : {{i.quantity}}</td>
+                    <td class="text-md-center p-3">Subtotal : {{i.subtotal}}</td>
+
+                    {% if i.product.stock > 0 %}
+
+                    <td width="100px" class="text-md-center p-3">
+                        <a href="{% url 'cart:addtocart' i.product.id %} "> <i class="fa-solid fa-square-plus" ></i></a><br>
+                        <a href="{% url 'cart:cartrm' i.product.id %}"><i class="fa-solid fa-square-minus"></i></a><br>
+                        <a href="{% url 'cart:cartdel' i.product.id %}"><i class="fa-solid fa-trash"></i></a>
+                        {% else %}
+                        <a href="{% url 'cart:cartrm' i.product.id %}"><i class="fa-solid fa-square-minus"></i></a><br>
+                        <a href="{% url 'cart:cartdel' i.product.id %}"><i class="fa-solid fa-trash"></i></a>
+                    {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="col-5">
+          <table class="table table-bordered border-3">
+                <tr>
+                    <th colspan="5" class="text-center">Check Out</th>
+                </tr>
+              <tr>
+                    <th colspan="5" class="text-center">Total:{{ total }}</th>
+                </tr>
+          </table>
+                  <a href="{% url 'cart:order' %}" class="btn btn-primary" >Place Order</a>
+
+                  <a href="{% url 'shop:category' %}" class="btn btn-primary">Continue Shopping</a>
+
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
+{% endblock %}

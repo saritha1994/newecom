@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="p-4">
+<h2 class="text-center p-4">{{cat.name}}</h2>
+<img src="{{cat.image.url}}" width="100%" height="700px"><br>
+<h2 class="text-center p-4">{{cat.description}}</h2>
+    </div>
+<div class="row">
+                    {% for i in pro %}
+                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                        <div class="single-new-pro mb-30 text-center">
+                            <div class="product-img">
+                                <img src="{{ i.image.url }}" height="300px" width="100px" alt="">
+                            </div>
+                            <div class="product-caption">
+                                <h3><a href="{% url 'shop:productdetail' i.id %}">{{ i.name }}</a></h3>
+                                <h4><b>{{ i.price }} Rs</b></h4>
+                                <span>{{ i.description }}</span>
+                            </div>
+                        </div>
+                    </div>{% endfor %}
+                     </div>
+
+</body>
+</html>
+{% endblock %}

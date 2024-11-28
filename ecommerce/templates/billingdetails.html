@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="POST">
+  {% csrf_token %}
+  <div class="mb-3">
+    <label class="form-label" >Address</label>
+    <input type="text" class="form-control" name="a" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label  class="form-label">Phone Number</label>
+    <input type="number" name="ph" class="form-control" >
+  </div>
+    <div class="mb-3">
+    <label  class="form-label">Pin Number</label>
+    <input type="text" name="p" class="form-control" >
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+  <div class="mb-3">
+    <label  class="form-label">Name</label>
+    <input type="text" name="n" class="form-control"  aria-describedby="emailHelp">
+ </div>
+       <div class="mb-3">
+    <label  class="form-label">Image</label>
+    <input type="file" name='i' class="form-control" >
+  </div>
+
+  <div class="mb-3">
+    <label  class="form-label">Stock</label>
+    <input type="number" name="s" class="form-control"  aria-describedby="emailHelp">
+ </div>
+     <div class="mb-3">
+    <label  class="form-label">Price</label>
+    <input type="number" name="p" class="form-control"  aria-describedby="emailHelp">
+ </div>
+  <div class="mb-3">
+    <label  class="form-label">Description</label>
+    <input type="text" name="d" class="form-control" id="exampleInputPassword1">
+  </div>
+<div >
+    <label  class="form-label">Category</label>
+                        <select class="submenu" name="c">Select
+                                            {% for i in cl %}
+                                            <option  value="{{ i.name }}">{{i.name}}</option>
+
+                                            {% endfor %}
+                                        </select>
+</div><br>
+<div>
+  <button type="submit" class="btn btn-primary">Submit</button></div>
+</form>
+</body>
+</html>
+{% endblock %}

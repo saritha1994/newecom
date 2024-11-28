@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="POST">
+  {% csrf_token %}
+    <div class="mb-3">
+    <label  class="form-label">Username</label>
+    <input type="text" name="un" class="form-control" >
+  </div>
+    <div class="mb-3">
+    <label  class="form-label">Password</label>
+    <input type="password" name="p" class="form-control" >
+  </div>
+    <div class="mb-3">
+    <label  class="form-label">Confirm Password</label>
+    <input type="password" name="cp" class="form-control" >
+  </div>
+    <div class="mb-3">
+    <label  class="form-label">First Name</label>
+    <input type="text" name="f" class="form-control" >
+  </div>
+    <div class="mb-3">
+    <label  class="form-label">Last name</label>
+    <input type="text" name="l" class="form-control" >
+  </div>
+  <div class="mb-3">
+    <label  class="form-label">Email address</label>
+    <input type="email" name="e" placeholder="Email address" class="form-control"  aria-describedby="emailHelp">
+    <div  class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+
+
+  <input type="submit" class="btn btn-primary"></input>
+</form>
+
+</body>
+</html>
+{% endblock %}
